@@ -66,11 +66,11 @@ class ComboBoxWithInput extends Component {
   render() {
     if (this.state.open === true){
       setTimeout(()=>{
-        document.getElementById(this.state.textBoxId).focus();
+        //document.getElementById(this.state.textBoxId).focus();
       },0)
     }
     return (
-      this.state.open ? <div contentEditable onBlur={this.onBlured.bind(this)} styleName="container">
+      this.state.open ? <div contentEditable onBlur={this.onBlured.bind(this)} className={styles.container}>
           <span>
               <input styleName='rta-input' type='text'
                      onChange={this.onChange.bind(this)}
@@ -79,7 +79,7 @@ class ComboBoxWithInput extends Component {
                      id={this.state.textBoxId}
               />
          </span>
-        <div styleName="dropdownlevelcell">
+        <div className={styles.dropdownlevelcell}>
           {
             this.props.options.map((el, i) => {
               var furtherDDCellStyle;
@@ -90,15 +90,15 @@ class ComboBoxWithInput extends Component {
                 }
               }
               return <div key={`${i}drd`} style={furtherDDCellStyle} onClick={this.onOptionSelected.bind(this, el)}
-                          styleName="dropdownlevelcellval" key={el.key + i}>
+                          className={styles.dropdownlevelcellval} key={el.key + i}>
                 {
-                  util.iff(el.value !== "", `${el.key} - ${el.value}`, el.key)
+                  el.value !== "" ? `${el.key} - ${el.value}` :  el.key
                 }
               </div>
             })
           }
         </div>
-      </div> : <div onClick={this.onLabelClick.bind(this)} styleName="labeltext">
+      </div> : <div onClick={this.onLabelClick.bind(this)} className={styles.labeltext}>
         <label>
           {this.props.dispVal}
         </label>

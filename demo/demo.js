@@ -1,4 +1,4 @@
-import ComboBoxWithInput from "ComboBoxWithInput";
+import ComboBoxWithInput from "../src/index";
 import React, {Component} from "react";
 
 class ComboBoxWithInputDemo extends Component {
@@ -6,70 +6,52 @@ class ComboBoxWithInputDemo extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      example1: {
-        value: "Inline Edit box"
-      },
-      validation: {
-        validationSuccess: true,
-        errorMessage: "Invalid"
-      }
+      dropDownOptions: [
+        {
+          key: "a",
+          value: "a"
+        }, {
+          key: "b",
+          value: "b"
+        }, {
+          key: "c",
+          value: "c"
+        }
+      ],
+      dispVal: "",
+      inputVal: ""
     };
   }
 
   componentDidMount() {
     this.forceUpdate();
   }
-
-  displayFormatter(text){
-    return <p><Icon icon="check"></Icon>{text}</p>;
-  }
-
-  handleChange1() {
-    var newValue = this.refs.example1.value;
-
-    //validation
-    var valid = true;
-    var minLength = 8;
-    if (newValue.length < minLength){
-      valid = false;
-    }
+  
+  //todo (vishal) improvement
+  onOptionSelected(option){
     this.setState({
-      example1: {
-        value: newValue
-      },
-      validation: {
-        validationSuccess: valid,
-        errorMessage: "Minimum length should be 8"
-      }
-    });
+      dispVal: option.value
+    })
   }
 
-  handleSave() {
-    return new Promise(function (resolve) {
-      var timeOut = 3000;
-      setTimeout(()=> {
-        resolve("Done");
-      }, timeOut);
-    });
+  onChange(newValue){
+    this.setState({
+      inputVal: newValue
+    })
   }
 
   render() {
-    var example1Props = {
-      ref: "example1",
-      value: this.state.example1.value,
-      label: "Inline Input",
-      validation: this.state.validation,
-      onChange: this.handleChange1.bind(this),
-      onSave: this.handleSave.bind(this),
-      displayFormatter: this.displayFormatter.bind(this)
-    };
     return (
       <span>
-        <ComboBoxWithInput {...example1Props} />
+       <ComboBoxWithInput onChange={this.onChange.bind(this)}
+                          onOptionSelected={this.onOptionSelected.bind(this)}
+                          options={this.state.dropDownOptions}
+                          dispVal={this.state.dispVal}
+                          inputVal={this.state.inputVal}/>
       </span>
     );
 
   }
 }
 
-export default ComboBoxWithInput;
+export default ComboBoxWithInputDemo;
