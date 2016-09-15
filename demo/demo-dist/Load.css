@@ -1,0 +1,60 @@
+.RCDemo_style__container,.RCDemo_style__rta-input ,.RCDemo_style__labeltext label,.RCDemo_style__labeltext,.RCDemo_style__dropdownlevelcellval{
+  position:relative;
+}
+
+.RCDemo_style__rta-input {
+  margin:0px;
+}
+
+.RCDemo_style__dropdownlevelcell{
+  position: absolute;
+  left: 0;
+  top:31px;
+  background: #ffffff;
+  z-index: 9998;
+  height:150px;
+  overflow: scroll;
+  overflow-x:hidden ;
+  box-shadow: 0px 0px 6px #c1bfbf;
+  text-align: center;
+}
+
+.RCDemo_style__dropdownlevelcellval{
+  background: #fafafa;
+  border: 1px solid transparent;
+  color: black;
+  cursor: pointer;
+  text-align: center;
+  font-size: 12px;
+  overflow: hidden;
+}
+
+.RCDemo_style__labeltext{
+  text-align: center;
+  cursor:pointer;
+  width:56px;
+  border:1px solid transparent;
+}
+
+.RCDemo_style__labeltext label{
+  left:0px;
+  margin-bottom: 0px;
+  cursor: grab;
+  min-width: 45px;
+  display: inline-block;
+
+}
+
+.RCDemo_style__labeltext label,.RCDemo_style__labeltext,.RCDemo_style__rta-input{
+  height: 30px;
+}
+.RCDemo_style__labeltext label,.RCDemo_style__dropdownlevelcellval{
+  line-height: 30px;
+}
+.RCDemo_style__dropdownlevelcell,.RCDemo_style__rta-input {
+  width: 76px;
+}
+.RCDemo_style__rta-input,.RCDemo_style__labeltext label{
+  font-size: 18px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJMb2FkLmNzcyIsInNvdXJjZVJvb3QiOiIifQ==*/
