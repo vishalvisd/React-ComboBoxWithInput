@@ -1,0 +1,37 @@
+{
+  "name": "combobox-with-input",
+  "version": "1.0.0",
+  "description": "React Component for a combo box with input box",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/visdgithub/React-ComboBoxWithInput.git"
+  },
+  "keywords": [
+    "React",
+    "Combobox",
+    "with",
+    "Input",
+    "Text",
+    "Box"
+  ],
+  "author": "Vishal Daga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/visdgithub/React-ComboBoxWithInput/issues"
+  },
+  "homepage": "https://github.com/visdgithub/React-ComboBoxWithInput#readme",
+  "dependencies": {
+    "node-uuid": "1.4.3",
+    "react-css-modules": "3.6.1"
+  },
+  "devDependencies": {
+    "react": ">0.12.x"
+  },
+  "peerDependencies": {
+    "react": ">0.12.x"
+  }
+}
