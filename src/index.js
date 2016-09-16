@@ -10,14 +10,16 @@ class ComboBoxWithInput extends Component {
     };
     this.styles = {
       container: {
-        position: "relative"
+        position: "absolute",
+        width: "700px"
       },
       rtaInput: {
         position: "relative",
         margin: "0px",
         height: "30px",
-        width: "76px",
-        fontSize: "18px"
+        width: "100%",
+        fontSize: "18px",
+        boxSizing: "border-box"
       },
       dropdownlevelcell: {
         position: "absolute",
@@ -29,7 +31,7 @@ class ComboBoxWithInput extends Component {
         overflow: "scroll",
         overflowX: "hidden",
         textAlign: "center",
-        width: "76px"
+        width: "100%"
       },
       dropdownlevelcellval: {
         background: "#fafafa",
@@ -44,19 +46,21 @@ class ComboBoxWithInput extends Component {
       labeltext: {
         textAlign: "center",
         cursor: "pointer",
-        width: "56px",
-        border: "1px solid transparent",
+        width: "100%",
+        border: "1px solid",
         height: "30px"
       },
       labeltextLabel: {
         left: "0px",
         marginBottom: "0px",
         cursor: "grab",
-        minWidth: "45px",
         display: "inline-block",
         height: "30px",
         lineHeight: "30px",
         fontSize: "18px"
+      },
+      editableContainer: {
+        width: "100%"
       }
     }
   }
@@ -118,40 +122,44 @@ class ComboBoxWithInput extends Component {
       },0)
     }
     return (
-      this.state.open ? <div contentEditable onBlur={this.onBlured.bind(this)} style={this.styles.container}>
-          <span>
-              <input style={this.styles.rtaInput} type='text'
+      <div className="visd_cbwi_container" style={this.styles.container}>
+        {
+          this.state.open ?
+            <div className="visd_cbwi_editContainer" contentEditable onBlur={this.onBlured.bind(this)} style={this.state.editableContainer}>
+              <input className="visd_cbwi_editContainerInput" style={this.styles.rtaInput} type='text'
                      onChange={this.onChange.bind(this)}
                      onKeyUp={this.onKeyUp.bind(this)}
                      value={this.props.inputVal}
                      id={this.state.textBoxId}
               />
-         </span>
-        <div style={this.styles.dropdownlevelcell}>
-          {
-            this.props.options.map((el, i) => {
-              var furtherDDCellStyle;
-              if (`${el.key}` === `${this.props.dispVal}`){
-                furtherDDCellStyle = {
-                  background : "#3276B1",
-                  color:"white",
-                }
-              }
-              return <div key={`${i}drd`} style={furtherDDCellStyle} onClick={this.onOptionSelected.bind(this, el)}
-                          style={this.styles.dropdownlevelcellval} key={el.key + i}>
+              <div className="visd_cbwi_editContainerDD" style={this.styles.dropdownlevelcell}>
                 {
-                  el.value !== "" ? `${el.key} - ${el.value}` :  el.key
+                  this.props.options.map((el, i) => {
+                    var furtherDDCellStyle;
+                    if (`${el.key}` === `${this.props.dispVal}`){
+                      furtherDDCellStyle = {
+                        background : "#3276B1",
+                        color:"white"
+                      }
+                    }
+                    return <div className={`visd_cbwi_editContainerDDCell_${i}`} key={`${i}drd`} style={furtherDDCellStyle} onClick={this.onOptionSelected.bind(this, el)}
+                                style={this.styles.dropdownlevelcellval} key={el.key + i}>
+                      {
+                        el.value !== "" ? `${el.key} - ${el.value}` :  el.key
+                      }
+                    </div>
+                  })
                 }
               </div>
-            })
-          }
-        </div>
-      </div> : <div onClick={this.onLabelClick.bind(this)} style={this.styles.labeltext}>
-        <label style={this.styles.labeltextLabel}>
-          {this.props.dispVal}
-        </label>
+            </div>
+            :
+            <div className="visd_cbwi_labelBox" onClick={this.onLabelClick.bind(this)} style={this.styles.labeltext}>
+              <label className="visd_cbwi_label" style={this.styles.labeltextLabel}>
+                {this.props.dispVal}
+              </label>
+            </div>
+        }
       </div>
-      
     );
   }
 }
