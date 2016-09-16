@@ -1,6 +1,6 @@
 {
   "name": "combobox-with-input",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "React Component for a combo box with input box",
   "main": "dist/index.js",
   "scripts": {
