@@ -1,4 +1,4 @@
-import ComboBoxWithInput from "../src/index";
+import ComboBoxWithInput from "ComboBoxWithInput";
 import React, {Component} from "react";
 
 class ComboBoxWithInputDemo extends Component {

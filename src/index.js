@@ -1,7 +1,4 @@
 import React, {Component} from "react";
-import styles from "./style.css";
-import cssModules from "react-css-modules";
-import uuid from 'node-uuid';
 
 class ComboBoxWithInput extends Component {
   constructor(props, context) {
@@ -9,7 +6,58 @@ class ComboBoxWithInput extends Component {
     this.state = {
       open: false,
       lastValue: "",
-      textBoxId: uuid.v4()
+      textBoxId: Math.floor(Math.random() * 100000000000)
+    };
+    this.styles = {
+      container: {
+        position: "relative"
+      },
+      rtaInput: {
+        position: "relative",
+        margin: "0px",
+        height: "30px",
+        width: "76px",
+        fontSize: "18px"
+      },
+      dropdownlevelcell: {
+        position: "absolute",
+        left: "0",
+        top: "31px",
+        background: "white",
+        zIndex: "9998",
+        height: "150px",
+        overflow: "scroll",
+        overflowX: "hidden",
+        textAlign: "center",
+        width: "76px"
+      },
+      dropdownlevelcellval: {
+        background: "#fafafa",
+        border: "1px solid transparent",
+        color: "black",
+        cursor: "pointer",
+        textAlign: "center",
+        fontSize: "12px",
+        overflow: "hidden",
+        lineHeight: "30px"
+      },
+      labeltext: {
+        textAlign: "center",
+        cursor: "pointer",
+        width: "56px",
+        border: "1px solid transparent",
+        height: "30px"
+      },
+      labeltextLabel: {
+        left: "0px",
+        marginBottom: "0px",
+        cursor: "grab",
+        minWidth: "45px",
+        display: "inline-block",
+        height: "30px",
+        lineHeight: "30px",
+        fontSize: "18px"
+      }
     }
   }
 
@@ -70,16 +118,16 @@ class ComboBoxWithInput extends Component {
       },0)
     }
     return (
-      this.state.open ? <div contentEditable onBlur={this.onBlured.bind(this)} className={styles.container}>
+      this.state.open ? <div contentEditable onBlur={this.onBlured.bind(this)} style={this.styles.container}>
           <span>
-              <input styleName='rta-input' type='text'
+              <input style={this.styles.rtaInput} type='text'
                      onChange={this.onChange.bind(this)}
                      onKeyUp={this.onKeyUp.bind(this)}
                      value={this.props.inputVal}
                      id={this.state.textBoxId}
               />
          </span>
-        <div className={styles.dropdownlevelcell}>
+        <div style={this.styles.dropdownlevelcell}>
           {
             this.props.options.map((el, i) => {
               var furtherDDCellStyle;
@@ -90,7 +138,7 @@ class ComboBoxWithInput extends Component {
                 }
               }
               return <div key={`${i}drd`} style={furtherDDCellStyle} onClick={this.onOptionSelected.bind(this, el)}
-                          className={styles.dropdownlevelcellval} key={el.key + i}>
+                          style={this.styles.dropdownlevelcellval} key={el.key + i}>
                 {
                   el.value !== "" ? `${el.key} - ${el.value}` :  el.key
                 }
@@ -98,8 +146,8 @@ class ComboBoxWithInput extends Component {
             })
           }
         </div>
-      </div> : <div onClick={this.onLabelClick.bind(this)} className={styles.labeltext}>
-        <label>
+      </div> : <div onClick={this.onLabelClick.bind(this)} style={this.styles.labeltext}>
+        <label style={this.styles.labeltextLabel}>
           {this.props.dispVal}
         </label>
       </div>
@@ -128,4 +176,4 @@ ComboBoxWithInput.propTypes = {
   inputVal: React.PropTypes.string
 };
 
-export default cssModules(ComboBoxWithInput, styles);
+export default ComboBoxWithInput;

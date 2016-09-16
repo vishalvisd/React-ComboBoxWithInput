@@ -1,28 +1,26 @@
-var CopyWebpackPlugin = require("copy-webpack-plugin");
-
 module.exports = [{
-  cache: true,
   devtool: "inline-source-map",
   entry: {
-    Load: "./Load.js"
+    index: "./src/index.js"
   },
-  babelrc: false,
   output: {
-    path: "demo-dist",
+    path: "dist",
     filename: "[name].js",
     libraryTarget: "umd",
     library: "[name]"
   },
-  plugins: [
-    new CopyWebpackPlugin([
-      // {output}/file.txt
-      {from: "index.html"}])
-  ],
+  externals: {
+    react: {
+      commonjs: "react",
+      commonjs2: "react",
+      amd: "React",
+      root: "React"
+    }
+  },
   module: {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /(node_modules)/,
         loader: "babel",
         query: {
           presets: ["es2015", "react"]
@@ -30,4 +28,4 @@ module.exports = [{
       }
     ]
   }
-}];
+}]
