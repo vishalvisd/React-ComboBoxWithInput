@@ -1,5 +1,10 @@
 # React-ComboBoxWithInput
 React component for ComboBox plus InputBox
 
-Intallation
+
+
+
+
+# Intallation
+
 npm i combobox-with-input --save
