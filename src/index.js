@@ -11,12 +11,12 @@ class ComboBoxWithInput extends Component {
     this.styles = {
       container: {
         position: "absolute",
-        width: "700px"
+        width: this.props.width ? this.props.width : "700px"
       },
       rtaInput: {
         position: "relative",
         margin: "0px",
-        height: "30px",
+        height: this.props.height ? this.props.height : "30px",
         width: "100%",
         fontSize: "18px",
         boxSizing: "border-box"
@@ -24,10 +24,9 @@ class ComboBoxWithInput extends Component {
       dropdownlevelcell: {
         position: "absolute",
         left: "0",
-        top: "31px",
+        top: this.props.height ? this.props.height : "30px",
         background: "white",
         zIndex: "9998",
-        height: "150px",
         overflow: "scroll",
         overflowX: "hidden",
         textAlign: "center",
@@ -41,22 +40,22 @@ class ComboBoxWithInput extends Component {
         textAlign: "center",
         fontSize: "12px",
         overflow: "hidden",
-        lineHeight: "30px"
+        lineHeight: this.props.height ? this.props.height : "30px"
       },
       labeltext: {
         textAlign: "center",
         cursor: "pointer",
         width: "100%",
         border: "1px solid",
-        height: "30px"
+        height: this.props.height ? this.props.height : "30px"
       },
       labeltextLabel: {
         left: "0px",
         marginBottom: "0px",
         cursor: "grab",
         display: "inline-block",
-        height: "30px",
-        lineHeight: "30px",
+        height: this.props.height ? this.props.height : "30px",
+        lineHeight: this.props.height ? this.props.height : "30px",
         fontSize: "18px"
       },
       editableContainer: {

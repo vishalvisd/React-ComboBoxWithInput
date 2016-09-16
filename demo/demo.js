@@ -47,7 +47,9 @@ class ComboBoxWithInputDemo extends Component {
                           onOptionSelected={this.onOptionSelected.bind(this)}
                           options={this.state.dropDownOptions}
                           dispVal={this.state.dispVal}
-                          inputVal={this.state.inputVal}/>
+                          inputVal={this.state.inputVal}
+                          width="300px"
+                          height="50px"/>
       </span>
     );
 
