@@ -10,7 +10,7 @@ class ComboBoxWithInput extends Component {
     };
     this.styles = {
       container: {
-        position: "absolute",
+        position: "relative",
         width: this.props.width ? this.props.width : "700px"
       },
       rtaInput: {
@@ -135,7 +135,13 @@ class ComboBoxWithInput extends Component {
                 {
                   this.props.options.map((el, i) => {
                     var dropDownLevelCellValClone = JSON.parse(JSON.stringify(this.styles.dropdownlevelcellval));
-                    if (`${el.key}` === `${this.props.dispVal}`){
+                    var topass;
+                    if (el.key === undefined) {
+                      topass = `${el}` === `${this.props.dispVal}`;
+                    } else {
+                      topass = `${el.key}` === `${this.props.dispVal}` || `${el.value}` === `${this.props.dispVal}`
+                    }
+                    if (topass){
                       if (this.props.selectedOptionStyle !== null){
                         Object.keys(this.props.selectedOptionStyle).map((styleKey) => {
                           dropDownLevelCellValClone[styleKey] = this.props.selectedOptionStyle[styleKey];
@@ -146,10 +152,10 @@ class ComboBoxWithInput extends Component {
                         dropDownLevelCellValClone.color = "#ffffff";
                       }
                     }
-                    return <div className={`visd_cbwi_editContainerDDCell_${i}`} key={`${i}drd`} onClick={this.onOptionSelected.bind(this, el)}
-                                style={dropDownLevelCellValClone} key={el.key + i}>
+                    return <div className={`visd_cbwi_editContainerDDCell_${i}`} key={`${i}${this.state.textBoxId}drd`} onClick={this.onOptionSelected.bind(this, el)}
+                                style={dropDownLevelCellValClone}>
                       {
-                        el.value !== "" ? `${el.key} - ${el.value}` :  el.key
+                        el.key === undefined ? el : (el.value !== "" ? `${el.key} - ${el.value}` :  el.key)
                       }
                     </div>
                   })
