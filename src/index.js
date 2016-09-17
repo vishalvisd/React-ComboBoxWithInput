@@ -134,15 +134,20 @@ class ComboBoxWithInput extends Component {
               <div className="visd_cbwi_editContainerDD" style={this.styles.dropdownlevelcell}>
                 {
                   this.props.options.map((el, i) => {
-                    var furtherDDCellStyle;
+                    var dropDownLevelCellValClone = JSON.parse(JSON.stringify(this.styles.dropdownlevelcellval));
                     if (`${el.key}` === `${this.props.dispVal}`){
-                      furtherDDCellStyle = {
-                        background : "#3276B1",
-                        color:"white"
+                      if (this.props.selectedOptionStyle !== null){
+                        Object.keys(this.props.selectedOptionStyle).map((styleKey) => {
+                          dropDownLevelCellValClone[styleKey] = this.props.selectedOptionStyle[styleKey];
+                        });
+                      } else {
+                        //default styles
+                        dropDownLevelCellValClone.background = "#3276B1";
+                        dropDownLevelCellValClone.color = "#ffffff";
                       }
                     }
-                    return <div className={`visd_cbwi_editContainerDDCell_${i}`} key={`${i}drd`} style={furtherDDCellStyle} onClick={this.onOptionSelected.bind(this, el)}
-                                style={this.styles.dropdownlevelcellval} key={el.key + i}>
+                    return <div className={`visd_cbwi_editContainerDDCell_${i}`} key={`${i}drd`} onClick={this.onOptionSelected.bind(this, el)}
+                                style={dropDownLevelCellValClone} key={el.key + i}>
                       {
                         el.value !== "" ? `${el.key} - ${el.value}` :  el.key
                       }
@@ -170,9 +175,11 @@ ComboBoxWithInput.defaultProps = {
   onLabelClick: null,
   options: null,
   dispVal: "",
-  inputVal: ""
+  inputVal: "",
+  selectedOptionStyle: null
 };
 
+//todo (visd) make optional as applicable
 ComboBoxWithInput.propTypes = {
   onChange: React.PropTypes.func,
   onKeyUp: React.PropTypes.func,
@@ -180,7 +187,8 @@ ComboBoxWithInput.propTypes = {
   onLabelClick: React.PropTypes.func,
   options: React.PropTypes.array,
   dispVal: React.PropTypes.string,
-  inputVal: React.PropTypes.string
+  inputVal: React.PropTypes.string,
+  selectedOptionStyle: React.PropTypes.object
 };
 
 export default ComboBoxWithInput;

@@ -19,7 +19,11 @@ class ComboBoxWithInputDemo extends Component {
         }
       ],
       dispVal: "",
-      inputVal: ""
+      inputVal: "",
+      selectedOptionStyle: {
+        background: "gray",
+        color: "#ffffff"
+      }
     };
   }
 
@@ -36,7 +40,8 @@ class ComboBoxWithInputDemo extends Component {
 
   onChange(newValue){
     this.setState({
-      inputVal: newValue
+      inputVal: newValue,
+      dispVal: newValue
     })
   }
 
@@ -49,7 +54,8 @@ class ComboBoxWithInputDemo extends Component {
                           dispVal={this.state.dispVal}
                           inputVal={this.state.inputVal}
                           width="300px"
-                          height="50px"/>
+                          height="50px"
+                          selectedOptionStyle = {this.state.selectedOptionStyle}/>
       </span>
     );
 
