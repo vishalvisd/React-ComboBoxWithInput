@@ -47,7 +47,7 @@ Props
 
 Demo
 ----
-[here](https://vishalvisd.github.io/React-ComboBoxWithInput/) 
+[Demo Link](https://vishalvisd.github.io/React-ComboBoxWithInput/) 
 
  
       
