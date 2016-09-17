@@ -1,6 +1,6 @@
 # React-ComboBoxWithInput
 
-React component that lets you select from a listed option like in drop down list or combo box as well as entering a value like an input box.
+React component that lets you select from a listed option like in drop down list or combo box as well as by entering a value, like an input box.
 
 - Modify look with custom styles using the different classnames (inspect dom for the classnames)
 -  list options can be in either of the two forms
@@ -47,7 +47,7 @@ Props
 
 Demo
 ----
-[Click here to go to demo page](https://vishalvisd.github.io/React-ComboBoxWithInput/) 
+[here](https://vishalvisd.github.io/React-ComboBoxWithInput/) 
 
  
       
