@@ -117,7 +117,7 @@ class ComboBoxWithInput extends Component {
   render() {
     if (this.state.open === true){
       setTimeout(()=>{
-        //document.getElementById(this.state.textBoxId).focus();
+        document.getElementById(this.state.textBoxId).focus();
       },0)
     }
     return (
