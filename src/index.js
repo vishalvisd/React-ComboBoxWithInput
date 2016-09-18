@@ -155,7 +155,8 @@ class ComboBoxWithInput extends Component {
                     return <div className={`visd_cbwi_editContainerDDCell_${i}`} key={`${i}${this.state.textBoxId}drd`} onClick={this.onOptionSelected.bind(this, el)}
                                 style={dropDownLevelCellValClone}>
                       {
-                        el.key === undefined ? el : (el.value !== "" ? `${el.key} - ${el.value}` :  el.key)
+                        (typeof(this.props.optionFormatter) === "function") ? this.props.optionFormatter(el) :
+                          el.key === undefined ? el : (el.value !== "" ? `${el.key} - ${el.value}` :  el.key)
                       }
                     </div>
                   })
@@ -182,7 +183,8 @@ ComboBoxWithInput.defaultProps = {
   options: null,
   dispVal: "",
   inputVal: "",
-  selectedOptionStyle: null
+  selectedOptionStyle: null,
+  optionFormatter: null
 };
 
 //todo (visd) make optional as applicable
@@ -194,7 +196,8 @@ ComboBoxWithInput.propTypes = {
   options: React.PropTypes.array,
   dispVal: React.PropTypes.string,
   inputVal: React.PropTypes.string,
-  selectedOptionStyle: React.PropTypes.object
+  selectedOptionStyle: React.PropTypes.object,
+  optionFormatter: React.PropTypes.func
 };
 
 export default ComboBoxWithInput;
