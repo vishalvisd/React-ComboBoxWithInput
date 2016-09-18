@@ -33,23 +33,7 @@ class ComboBoxWithInputDemo extends Component {
       width1: "300px",
       height1: "50px",
       width2: "150px",
-      height2: "30px",
-
-      info: {
-        events: [
-          "onChange","onKeyUp","onOptionSelected","onLabelClick", "options", "dispVal", "inputVal", "selectedOptionStyle"
-        ],
-        propType: [
-          "func", "func", "func", "func", "array", "string", "string", "object (optional)"
-        ],
-        description: [
-          "Entered Value as callback argument", "Key up event object as callback argument",
-          "Selected Option as callback argument", "click event as callback argument",
-          "drop down options array. Can be passed either as array of objects formatted - {key:'key1', value:'value1'} or " +
-          "array of string - ['option1', 'option2] ", "displayed string when component is not focused",
-          "displayed string inside the input box", "valid style object to distinguish the selected option in the dropdown list"
-        ]
-      }
+      height2: "30px"
     };
   }
 
@@ -98,41 +82,11 @@ class ComboBoxWithInputDemo extends Component {
     })
   }
 
+  optionFormatter(el){
+    return el.key === undefined ? el : (el.value !== "" ? `${el.key} - ${el.value}` :  el.key)
+  }
+
   ddPropType(comp, compNum){
-    // return  <table>
-    //   <tr>
-    //     <th>
-    //       Prop
-    //     </th>
-    //     <th>
-    //       Type
-    //     </th>
-    //     <th>
-    //       Current Value
-    //     </th>
-    //   </tr>
-    //
-    //   <tr>
-    //   </tr>
-    //   <tr>
-    //     <td>
-    //       onChange
-    //       onKeyUp: React.PropTypes.func,
-    //       onOptionSelected: React.PropTypes.func,
-    //       onLabelClick: React.PropTypes.func,
-    //       options: React.PropTypes.array,
-    //       dispVal: React.PropTypes.string,
-    //       inputVal: React.PropTypes.string,
-    //       selectedOptionStyle: React.PropTypes.object
-    //     </td>
-    //     <td>
-    //       React.PropTypes.func
-    //     </td>
-    //     <td>
-    //       {this.onChange}
-    //     </td>
-    //   </tr>
-    // </table>
     return <table style={{width: "100%"}}>
       <tbody>
       {
@@ -143,7 +97,7 @@ class ComboBoxWithInputDemo extends Component {
             </td>
             <td>
               {
-                (prop === "onChange" || prop === "onOptionSelected") ? "func()" :
+                (prop === "onChange" || prop === "onOptionSelected" || prop === "optionFormatter") ? "func()" :
                     prop === "selectedOptionStyle" ? <JSONViewer json={this.state[`${prop}`]}></JSONViewer> :
                       <JSONViewer json={this.state[`${prop}${compNum}`]}></JSONViewer>}
             </td>
@@ -179,7 +133,8 @@ class ComboBoxWithInputDemo extends Component {
                                    inputVal={this.state.inputVal1}
                                    width= {this.state.width1}
                                    height={this.state.height1}
-                                   selectedOptionStyle = {this.state.selectedOptionStyle}/>
+                                   selectedOptionStyle = {this.state.selectedOptionStyle}
+                                   optionFormatter = {this.optionFormatter.bind(this)}/>
 
 
 </div>
