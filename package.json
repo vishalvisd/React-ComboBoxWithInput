@@ -31,6 +31,6 @@
     "babel-preset-react": "6.11.1"
   },
   "peerDependencies": {
-    "react": ">0.12.x"
+    "react": ">0.13.x"
   }
 }

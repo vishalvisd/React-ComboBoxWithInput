@@ -19,8 +19,7 @@
     "webpack": "^1.13.2"
   },
   "dependencies": {
-    "react": "15.3.1",
-    "react-dom": "15.3.1",
+    "react": "0.13.x",
     "combobox-with-input": "*",
     "react-json-viewer":  "1.1.0"
   },
