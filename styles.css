@@ -1,3 +1,15 @@
-table, th, td {
-  border: 1px solid black;
+th, td {
+  border: 1px solid lightblue;
+}
+
+table {
+  width: 100%;
+}
+
+body {
+  font-family: monospace;
+}
+
+#content{
+  margin-top: 30px;
 }
