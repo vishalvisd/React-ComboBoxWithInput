@@ -111,11 +111,17 @@ class ComboBoxWithInputDemo extends Component {
   render() {
     return (
       <span>
+        <p style={{fontSize: "36px",
+    fontWeight: "bold",
+    fontFamily: "serif",
+    textAlign: "center"}}>
+          ComboBox with Input
+        </p>
         <div style={{width: "80%", margin: "0 auto"}}>
         <table style={{width: "100%"}}>
           <tbody>
           <tr>
-            <th>
+            <th style={{border: "1px solid transparent"}}>
 
             </th>
             <th>
@@ -123,9 +129,14 @@ class ComboBoxWithInputDemo extends Component {
             </th>
           </tr>
           <tr>
-            <td style={{width: "40%", verticalAlign:"top", align:"center"}}>
+            <td style={{width: "40%", verticalAlign:"top", align:"center", border: "1px solid transparent"}}>
           <div style={{width:"50%", margin: "0% auto"}}>
-                Please select a rate level or enter a rate :-
+                <p style={{
+    fontWeight: "bold",
+    fontFamily: "serif",
+    textAlign: "center"}}>
+                   Select rate level or enter a rate :-
+                </p>
                 <ComboBoxWithInput onChange={this.onChange.bind(this)}
                                    onOptionSelected={this.onOptionSelected.bind(this)}
                                    options={this.state.options1}
@@ -140,7 +151,7 @@ class ComboBoxWithInputDemo extends Component {
 </div>
 
             </td>
-            <td style={{width: "40%"}}>
+            <td style={{width: "40%", border: "1px solid transparent"}}>
               <div style={{ margin: "0 auto"}}>
                {this.ddPropType.bind(this, ComboBoxWithInput, 1)()}
                 </div>
