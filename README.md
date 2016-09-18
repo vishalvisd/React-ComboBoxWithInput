@@ -26,6 +26,7 @@ or
 Props
 -----
 
+
 > <table><tbody><tr><th></th><th>PropType</th><th>Description</th></tr><tr><td>onChange</td><td>func</td><td>Entered
 > Value as callback
 > argument</td></tr><tr><td>onKeyUp</td><td>func</td><td>Key up event
@@ -43,8 +44,7 @@ Props
 > string inside the input
 > box</td></tr><tr><td>selectedOptionStyle</td><td>object
 > (optional)</td><td>valid style object to distinguish the selected
-> option in the dropdown list</td></tr></tbody></table>
-
+> option in the dropdown list</td></tr><tr><td>optionFormatter</td><td>func</td><td>selected option from the passed options array as callback argument</td></tr></tbody></table>
 Demo
 ----
 [Demo Link](https://vishalvisd.github.io/React-ComboBoxWithInput/) 
